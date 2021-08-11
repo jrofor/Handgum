@@ -1,0 +1,2 @@
+rootProject.name = "Handgum"
+include ':app'
