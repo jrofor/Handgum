@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/revListFragment">
+
+    <fragment
+        android:id="@+id/revListFragment"
+        android:name="com.example.roman.handgum.ui.fragment.revlist.RevListFragment"
+        android:label="RevListFragment"
+        tools:layout="@layout/fragment_rev_list">
+        <action
+            android:id="@+id/action_revListFragment_to_revDetailsFragment"
+            app:destination="@id/revDetailsFragment"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/revDetailsFragment"
+        android:name="com.example.roman.handgum.ui.fragment.revdetails.RevDetailsFragment"
+        android:label="RevDetailsFragment"
+        tools:layout="@layout/fragment_rev_details">
+        <argument
+            android:name="url"
+            android:defaultValue="s"
+            app:argType="string" />
+    </fragment>
+</navigation>

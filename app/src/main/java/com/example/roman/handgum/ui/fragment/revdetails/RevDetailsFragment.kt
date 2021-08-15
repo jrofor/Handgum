@@ -1,18 +1,18 @@
-package com.example.roman.handgum.ui.fragment
+package com.example.roman.handgum.ui.fragment.revdetails
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.roman.handgum.databinding.FragmentRevListBinding
+import com.example.roman.handgum.databinding.FragmentRevDetailsBinding
 import com.example.roman.handgum.ui.base.BaseFragment
 
 /**
  * @author rofor
  */
-class RevListFragment : BaseFragment() {
+class RevDetailsFragment : BaseFragment() {
 
-    private var _binding: FragmentRevListBinding? = null
+    private var _binding: FragmentRevDetailsBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -20,7 +20,7 @@ class RevListFragment : BaseFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentRevListBinding.inflate(inflater, container, false)
+        _binding = FragmentRevDetailsBinding.inflate(inflater, container, false)
 
         return binding.root
     }
@@ -29,5 +29,4 @@ class RevListFragment : BaseFragment() {
         super.onDestroyView()
         _binding = null
     }
-
 }

@@ -75,6 +75,11 @@ dependencies {
     implementation 'com.google.android.material:material:1.4.0'
 
     /*
+    * ImageLoader
+    */
+    implementation "com.github.bumptech.glide:glide:4.9.0"
+
+    /*
     * Api
     */
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
@@ -130,4 +135,11 @@ dependencies {
     implementation 'org.mapstruct:mapstruct:1.4.2.Final'
     kapt 'org.mapstruct:mapstruct-processor:1.4.2.Final'
 
+    /*
+    * Navigation
+    */
+    implementation "androidx.navigation:navigation-fragment-ktx:2.3.5"
+    implementation "androidx.navigation:navigation-ui-ktx:2.3.5"
+    implementation "androidx.navigation:navigation-dynamic-features-fragment:2.3.5"
+    apply plugin: "androidx.navigation.safeargs.kotlin"
 }
