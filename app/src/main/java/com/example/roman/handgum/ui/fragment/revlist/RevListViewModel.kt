@@ -45,4 +45,8 @@ class RevListViewModel @Inject constructor(
             }).disposeOnCleared()
     }
 
+    fun onRefresh() {
+        loadReview()
+    }
+
 }

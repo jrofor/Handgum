@@ -48,7 +48,9 @@ class RevListFragment : BaseFragment() {
         _binding = FragmentRevListBinding.inflate(inflater, container, false)
 
         binding.apply {
-            swipeRefreshLayout.isEnabled = false
+            swipeRefreshLayout.setOnRefreshListener {
+                viewModel.onRefresh()
+            }
             recycle.apply {
                 layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
                 addItemDecoration(ItemDecoration(resources.getDimensionPixelOffset(R.dimen.review_item_offset)))

@@ -33,7 +33,7 @@ class ReviewAdapter : RecyclerView.Adapter<ReviewAdapter.ReviewViewHolder>() {
         val inflater = LayoutInflater.from(parent.context)
         return ReviewViewHolder(
             ItemReviewBinding.inflate(inflater, parent, false),
-            parent.width,
+            parent.measuredWidth,
             items[0]
         )
     }

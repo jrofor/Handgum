@@ -4,7 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.WebChromeClient
+import android.webkit.WebView
 import android.webkit.WebViewClient
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
@@ -27,6 +30,19 @@ class RevDetailsFragment : BaseFragment() {
     private var _binding: FragmentRevDetailsBinding? = null
     private val binding get() = _binding!!
 
+    private val simpleWebChromeClient = object : WebChromeClient() {
+        override fun onProgressChanged(view: WebView?, progress: Int) {
+            binding.progressBar.apply {
+                if (progress in 0..99) {
+                    if (!isVisible) showProgressBar(true)
+                    setProgress(progress)
+                } else {
+                    showProgressBar(false)
+                }
+            }
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         appComponent.revDetailsComponent().create().inject(this)
@@ -42,21 +58,28 @@ class RevDetailsFragment : BaseFragment() {
     ): View {
         _binding = FragmentRevDetailsBinding.inflate(inflater, container, false)
         binding.apply {
-            webView.webViewClient = WebViewClient()
+            webView.apply {
+                webViewClient = WebViewClient()
+                webChromeClient = simpleWebChromeClient
+            }
         }
         viewModel.apply {
             urlLinkLivaData.observe({ viewLifecycleOwner.lifecycle }, ::setWebViewLoadUrl)
             start()
-
-            return binding.root
         }
+        return binding.root
     }
 
     private fun setWebViewLoadUrl(url: String) {
         binding.webView.loadUrl(url)
     }
 
-
+    private fun showProgressBar(visible: Boolean) {
+        binding.progressBar.apply {
+            isVisible = visible
+            isIndeterminate = !visible
+        }
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()
