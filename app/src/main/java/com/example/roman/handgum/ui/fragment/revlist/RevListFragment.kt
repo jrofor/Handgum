@@ -27,6 +27,9 @@ class RevListFragment : BaseFragment() {
 
     private val viewModel by viewModels<RevListViewModel> { viewModelFactory }
 
+    override val isNavigateBackVisible = false
+    override val titleRes = R.string.fragment_rev_list_title
+
     private var _binding: FragmentRevListBinding? = null
     private val binding get() = _binding!!
 
@@ -45,6 +48,7 @@ class RevListFragment : BaseFragment() {
         _binding = FragmentRevListBinding.inflate(inflater, container, false)
 
         binding.apply {
+            swipeRefreshLayout.isEnabled = false
             recycle.apply {
                 layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
                 addItemDecoration(ItemDecoration(resources.getDimensionPixelOffset(R.dimen.review_item_offset)))
@@ -56,13 +60,13 @@ class RevListFragment : BaseFragment() {
 
         viewModel.apply {
             documentLiveData.observe({ viewLifecycleOwner.lifecycle }, ::setData)
+            loadingLiveData.observe({ viewLifecycleOwner.lifecycle }, ::setRefreshing)
             start()
         }
         return binding.root
     }
 
     private fun navigateToRevDetailsFragment(url: String) {
-
         val actions =
             RevListFragmentDirections.actionRevListFragmentToRevDetailsFragment(url)
         findNavController().navigate(actions)
@@ -70,6 +74,10 @@ class RevListFragment : BaseFragment() {
 
     private fun setData(list: List<ReviewModel>) {
         reviewAdapter.items = list
+    }
+
+    private fun setRefreshing(isRefresh: Boolean) {
+        binding.swipeRefreshLayout.isRefreshing = isRefresh
     }
 
     override fun onDestroyView() {

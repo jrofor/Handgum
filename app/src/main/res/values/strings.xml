@@ -1,5 +1,12 @@
 <resources>
     <string name="app_name">Handgum</string>
-    <string name="contentDescription_multimedia">multimedia</string>
-    <string name="btn_name">READ MORE</string>
+
+    <!--RevListFragment-->
+    <string name="fragment_rev_list_title">News List</string>
+    <string name="fragment_rev_list_desc_multimedia">multimedia</string>
+    <string name="fragment_rev_list_btn_name">READ MORE</string>
+
+    <!--RevDetailsFragment-->
+    <string name="fragment_rev_details_title">more</string>
+
 </resources>

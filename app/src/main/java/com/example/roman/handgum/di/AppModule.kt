@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Room
 import com.example.roman.handgum.BuildConfig
 import com.example.roman.handgum.data.db.AppDatabase
+import com.example.roman.handgum.data.networkApi.ApiKeyInterceptor
 import com.example.roman.handgum.data.networkApi.api.Api
 import com.example.roman.handgum.data.networkApi.api.ApiWorker
 import com.example.roman.handgum.data.networkApi.api.ApiWorkerImpl
@@ -12,6 +13,7 @@ import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -39,12 +41,17 @@ class AppModule {
 
     @Provides
     fun provideOkHttp(): OkHttpClient {
-        return OkHttpClient.Builder()
-            //.addInterceptor(LoggingInterceptor()) TODO: Add Interceptor for Debug
+        val okHttpClient = OkHttpClient.Builder()
+            .addInterceptor(ApiKeyInterceptor.create(BuildConfig.API_KEY))
             .connectTimeout(BuildConfig.TIMEOUT, TimeUnit.SECONDS)
             .readTimeout(BuildConfig.TIMEOUT, TimeUnit.SECONDS)
             .writeTimeout(BuildConfig.TIMEOUT, TimeUnit.SECONDS)
-            .build()
+        if (BuildConfig.DEBUG) {
+            val interceptor = HttpLoggingInterceptor()
+            interceptor.level = HttpLoggingInterceptor.Level.BODY
+            okHttpClient.addInterceptor(interceptor)
+        }
+        return okHttpClient.build()
     }
 
     @Provides

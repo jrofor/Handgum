@@ -10,7 +10,7 @@ import com.google.gson.annotations.SerializedName
  */
 data class MovieRevResponse(
     @SerializedName("results")
-    var results: List<ReviewDTO> = listOf()
+    var results: List<ReviewDTO>
 ) {
 
     data class ReviewDTO(

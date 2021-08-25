@@ -1,6 +1,7 @@
 package com.example.roman.handgum.data.networkApi.api
 
 import com.example.roman.handgum.data.networkApi.models.response.MovieRevResponse
+import io.reactivex.Single
 
 /**
  * Facade for working with the network
@@ -8,5 +9,5 @@ import com.example.roman.handgum.data.networkApi.models.response.MovieRevRespons
  */
 interface ApiWorker {
 
-    suspend fun getMovieReviews(): MovieRevResponse
+    fun getMovieReviews(): Single<MovieRevResponse>
 }
