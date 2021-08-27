@@ -63,6 +63,7 @@ class RevListFragment : BaseFragment() {
         viewModel.apply {
             documentLiveData.observe({ viewLifecycleOwner.lifecycle }, ::setData)
             loadingLiveData.observe({ viewLifecycleOwner.lifecycle }, ::setRefreshing)
+            noDataLiveData.observe({ viewLifecycleOwner.lifecycle }, ::showNoDataMessage)
             start()
         }
         return binding.root
@@ -80,6 +81,19 @@ class RevListFragment : BaseFragment() {
 
     private fun setRefreshing(isRefresh: Boolean) {
         binding.swipeRefreshLayout.isRefreshing = isRefresh
+    }
+
+    private fun showNoDataMessage(isShow: Boolean) {
+        binding.apply {
+            if (isShow) {
+                recycle.visibility = View.GONE
+                tvError.visibility = View.VISIBLE
+            } else {
+                recycle.visibility = View.VISIBLE
+                tvError.visibility = View.GONE
+            }
+        }
+
     }
 
     override fun onDestroyView() {

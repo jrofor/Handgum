@@ -25,19 +25,19 @@ class RevListViewModel @Inject constructor(
     val noDataLiveData: LiveData<Boolean> = _noDataLiveData
 
     override fun onStart() {
-        loadReview()
+        loadReview(true)
     }
 
-    private fun loadReview() {
-        revListInteractor.getReviewList()
+    private fun loadReview(isFirstLoading: Boolean) {
+        revListInteractor.getReviewList(isFirstLoading)
             .subscribeOn(Schedulers.io())
             .doOnSubscribe { _loadingLiveData.value = true }
             .observeOn(AndroidSchedulers.mainThread())
             .doAfterTerminate { _loadingLiveData.value = false }
             .subscribe({ result ->
-                val listIsEmpty = result.isEmpty()
+                val listIsEmpty = result.get()?.isEmpty() ?: false
                 if (!listIsEmpty) {
-                    _documentLiveData.value = result
+                    _documentLiveData.value = result.get()
                 }
                 _noDataLiveData.value = listIsEmpty
             }, { error ->
@@ -46,7 +46,7 @@ class RevListViewModel @Inject constructor(
     }
 
     fun onRefresh() {
-        loadReview()
+        loadReview(false)
     }
 
 }
