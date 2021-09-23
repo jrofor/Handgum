@@ -21,6 +21,7 @@
         android:name="com.example.roman.handgum.ui.fragment.revdetails.RevDetailsFragment"
         android:label="RevDetailsFragment"
         tools:layout="@layout/fragment_rev_details">
+
         <argument
             android:name="url"
             android:defaultValue="s"
