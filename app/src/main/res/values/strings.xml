@@ -9,5 +9,21 @@
 
     <!--RevDetailsFragment-->
     <string name="fragment_rev_details_title">more</string>
+    <string name="fragment_rev_details_nav_arg_name">url</string>
+
+    <!--deeplink-->
+    <string name="fragment_deep_link_title">deeplink with Notify</string>
+    <string name="domain_name">https://www.nytimes.com/$s</string>
+    <string name="test_link">https://www.nytimes.com/2021/09/23/movies/im-your-man-review.html</string>
+
+    <!--menu-->
+    <string name="menu_title_deep">deep</string>
+
+    <!--Notification-->
+    <string name="defaultChannel">Channel</string>
+    <string name="notificationDescription">notificationDescription</string>
+    <string name="deepLinkNotificationTitle">Tap link</string>
+    <string name="contentText">Hey, tap link</string>
+
 
 </resources>

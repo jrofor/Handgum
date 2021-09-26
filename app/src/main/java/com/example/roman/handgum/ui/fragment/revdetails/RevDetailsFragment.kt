@@ -48,7 +48,8 @@ class RevDetailsFragment : BaseFragment() {
         appComponent.revDetailsComponent().create().inject(this)
 
         val args: RevDetailsFragmentArgs by navArgs()
-        viewModel.urlLink = args.url
+        viewModel.urlLink = args.toBundle()
+            .getString(resources.getString(R.string.fragment_rev_details_nav_arg_name)).toString()
     }
 
     override fun onCreateView(

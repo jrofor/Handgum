@@ -1,9 +1,7 @@
 package com.example.roman.handgum.ui.fragment.revlist
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -46,7 +44,7 @@ class RevListFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentRevListBinding.inflate(inflater, container, false)
-
+        setHasOptionsMenu(true)
         binding.apply {
             swipeRefreshLayout.setOnRefreshListener {
                 viewModel.onRefresh()
@@ -95,6 +93,22 @@ class RevListFragment : BaseFragment() {
         }
 
     }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.main_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean =
+        when (item.itemId) {
+            R.id.deep -> {
+                val actions =
+                    RevListFragmentDirections.actionRevListFragmentToDeepLinkFragment()
+                findNavController().navigate(actions)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

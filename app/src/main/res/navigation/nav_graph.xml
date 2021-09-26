@@ -15,6 +15,9 @@
             app:destination="@id/revDetailsFragment"
             app:popUpTo="@id/revListFragment"
             app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_revListFragment_to_deepLinkFragment"
+            app:destination="@id/deepLinkFragment" />
     </fragment>
     <fragment
         android:id="@+id/revDetailsFragment"
@@ -24,7 +27,18 @@
 
         <argument
             android:name="url"
-            android:defaultValue="s"
+            android:defaultValue=""
             app:argType="string" />
+        <deepLink
+            android:id="@+id/deepLink"
+            app:uri="https://www.nytimes.com/{uri}" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/deepLinkFragment"
+        android:name="com.example.roman.handgum.ui.fragment.deeplink.DeepLinkFragment"
+        android:label="DeepLinkFragment">
+
     </fragment>
 </navigation>

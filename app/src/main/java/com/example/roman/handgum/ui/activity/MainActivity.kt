@@ -1,5 +1,6 @@
 package com.example.roman.handgum.ui.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
@@ -8,6 +9,7 @@ import androidx.navigation.Navigation
 import com.example.roman.handgum.BuildConfig
 import com.example.roman.handgum.R
 import com.example.roman.handgum.databinding.ActivityMainBinding
+import com.example.roman.handgum.domain.utils.Notifier
 import timber.log.Timber
 
 class MainActivity : AppCompatActivity() {
@@ -28,6 +30,7 @@ class MainActivity : AppCompatActivity() {
 
             })
         }
+        Notifier.init(this)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -35,6 +38,11 @@ class MainActivity : AppCompatActivity() {
             navController.popBackStack()
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onNewIntent(intent: Intent?) {
+        super.onNewIntent(intent)
+        navController.handleDeepLink(intent)
     }
 
 }
