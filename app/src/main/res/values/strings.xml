@@ -10,4 +10,10 @@
     <!--RevDetailsFragment-->
     <string name="fragment_rev_details_title">more</string>
 
+    <!--FeatureFragment-->
+    <string name="fragment_feature_title">Feature</string>
+
+    <!--menu-->
+    <string name="menu_title_feature">feature</string>
+
 </resources>

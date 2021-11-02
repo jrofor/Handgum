@@ -15,6 +15,9 @@
             app:destination="@id/revDetailsFragment"
             app:popUpTo="@id/revListFragment"
             app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_revListFragment_to_featureFragment"
+            app:destination="@id/featureFragment" />
     </fragment>
     <fragment
         android:id="@+id/revDetailsFragment"
@@ -25,5 +28,12 @@
             android:name="url"
             android:defaultValue="s"
             app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/featureFragment"
+        android:name="com.example.roman.handgum.ui.fragment.feature.FeatureFragment"
+        android:label="FeatureFragment">
+
     </fragment>
 </navigation>
