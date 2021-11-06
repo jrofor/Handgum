@@ -42,6 +42,7 @@ class FeatureFragment : BaseFragment() {
 
         viewModel.apply {
             fLivaData.observe({ viewLifecycleOwner.lifecycle }, ::f)
+
             start()
         }
         return binding.root
