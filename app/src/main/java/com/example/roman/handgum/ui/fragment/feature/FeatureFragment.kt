@@ -12,7 +12,7 @@ import com.example.roman.handgum.ui.base.BaseFragment
 import javax.inject.Inject
 
 
-class FeatureFragment : BaseFragment() {
+class FeatureFragment : BaseFragment(R.layout.fragment_feature) {
 
 
     @Inject

@@ -1,9 +1,7 @@
 package com.example.roman.handgum.ui.fragment.revdetails
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.webkit.WebChromeClient
 import android.webkit.WebView
 import android.webkit.WebViewClient
@@ -14,12 +12,13 @@ import androidx.navigation.fragment.navArgs
 import com.example.roman.handgum.R
 import com.example.roman.handgum.databinding.FragmentRevDetailsBinding
 import com.example.roman.handgum.ui.base.BaseFragment
+import com.example.roman.handgum.utils.rx.viewbinding.viewBinding
 import javax.inject.Inject
 
 /**
  * @author rofor
  */
-class RevDetailsFragment : BaseFragment() {
+class RevDetailsFragment : BaseFragment(R.layout.fragment_rev_details) {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -27,10 +26,9 @@ class RevDetailsFragment : BaseFragment() {
 
     override val titleRes = R.string.fragment_rev_details_title
 
-    private var _binding: FragmentRevDetailsBinding? = null
-    private val binding get() = _binding!!
+    private val binding: FragmentRevDetailsBinding by viewBinding()
 
-    private val simpleWebChromeClient = object : WebChromeClient() {
+    private var simpleWebChromeClient = object : WebChromeClient() {
         override fun onProgressChanged(view: WebView?, progress: Int) {
             binding.progressBar.apply {
                 if (progress in 0..99) {
@@ -42,32 +40,27 @@ class RevDetailsFragment : BaseFragment() {
             }
         }
     }
+    override val navigationArguments: RevDetailsFragmentArgs by navArgs()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun initDI() {
         appComponent.revDetailsComponent().create().inject(this)
-
-        val args: RevDetailsFragmentArgs by navArgs()
-        viewModel.urlLink = args.url
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentRevDetailsBinding.inflate(inflater, container, false)
-        binding.apply {
-            webView.apply {
-                webViewClient = WebViewClient()
-                webChromeClient = simpleWebChromeClient
-            }
-        }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initViews()
+        viewModel.urlLink = navigationArguments.url
         viewModel.apply {
             urlLinkLivaData.observe({ viewLifecycleOwner.lifecycle }, ::setWebViewLoadUrl)
             start()
         }
-        return binding.root
+    }
+
+    private fun initViews() = with(binding) {
+        webView.apply {
+            webViewClient = WebViewClient()
+            webChromeClient = simpleWebChromeClient
+        }
     }
 
     private fun setWebViewLoadUrl(url: String) {
@@ -81,8 +74,4 @@ class RevDetailsFragment : BaseFragment() {
         }
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
 }

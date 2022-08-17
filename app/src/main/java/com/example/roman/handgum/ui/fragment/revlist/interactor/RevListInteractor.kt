@@ -22,8 +22,8 @@ class RevListInteractor @Inject constructor(
         return if (isFirstLoading) {
             Observable.zip(
                 getReviewFromDb(),
-                loadReviewFromApi(),
-                { t1, t2 -> dataToResult(t1, t2) })
+                loadReviewFromApi()
+            ) { t1, t2 -> dataToResult(t1, t2) }
         } else {
             loadReviewFromApi()
         }
