@@ -23,6 +23,7 @@ class RevDetailsFragment : BaseFragment(R.layout.fragment_rev_details) {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
     private val viewModel by viewModels<RevDetailsViewModel> { viewModelFactory }
+        .also { lifecycle.addObserver(it.value) }
 
     override val titleRes = R.string.fragment_rev_details_title
 
@@ -51,8 +52,8 @@ class RevDetailsFragment : BaseFragment(R.layout.fragment_rev_details) {
         initViews()
         viewModel.urlLink = navigationArguments.url
         viewModel.apply {
+            lifecycle.addObserver(this)
             urlLinkLivaData.observe({ viewLifecycleOwner.lifecycle }, ::setWebViewLoadUrl)
-            start()
         }
     }
 

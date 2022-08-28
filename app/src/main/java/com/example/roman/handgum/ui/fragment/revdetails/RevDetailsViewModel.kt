@@ -15,7 +15,7 @@ class RevDetailsViewModel @Inject constructor() : BaseViewModel() {
     private val _urlLinkLivaData = MutableLiveData<String>()
     val urlLinkLivaData: LiveData<String> = _urlLinkLivaData
 
-    override fun onStart() {
+    override fun onCreate() {
         _urlLinkLivaData.value = urlLink
     }
 

@@ -19,7 +19,6 @@ class FeatureFragment : BaseFragment(R.layout.fragment_feature) {
     lateinit var viewModelFactory: ViewModelProvider.Factory
     private val viewModel by viewModels<FeatureViewModel> { viewModelFactory }
 
-
     override val titleRes = R.string.fragment_rev_details_title
 
     private var _binding: FragmentFeatureBinding? = null
@@ -41,8 +40,8 @@ class FeatureFragment : BaseFragment(R.layout.fragment_feature) {
         }
 
         viewModel.apply {
+            lifecycle.addObserver(this)
             fLivaData.observe({ viewLifecycleOwner.lifecycle }, ::f)
-            start()
         }
         return binding.root
     }

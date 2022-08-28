@@ -24,7 +24,8 @@ class RevListViewModel @Inject constructor(
     private val _noDataLiveData = MutableLiveData<Boolean>()
     val noDataLiveData: LiveData<Boolean> = _noDataLiveData
 
-    override fun onStart() {
+    override fun onCreate() {
+        super.onCreate()
         loadReview(true)
     }
 

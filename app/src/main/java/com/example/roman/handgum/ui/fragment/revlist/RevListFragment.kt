@@ -27,7 +27,6 @@ class RevListFragment : BaseFragment(R.layout.fragment_rev_list) {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
-
     private val viewModel by viewModels<RevListViewModel> { viewModelFactory }
 
     override val isNavigateBackVisible = false
@@ -44,12 +43,11 @@ class RevListFragment : BaseFragment(R.layout.fragment_rev_list) {
         super.onViewCreated(view, savedInstanceState)
         setHasOptionsMenu(true)
         initViews()
-
         viewModel.apply {
+            lifecycle.addObserver(this)
             documentLiveData.observe({ viewLifecycleOwner.lifecycle }, ::setData)
             loadingLiveData.observe({ viewLifecycleOwner.lifecycle }, ::setRefreshing)
             noDataLiveData.observe({ viewLifecycleOwner.lifecycle }, ::showNoDataMessage)
-            start()
         }
     }
 

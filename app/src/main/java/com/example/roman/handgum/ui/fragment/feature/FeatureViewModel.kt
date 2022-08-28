@@ -12,7 +12,7 @@ class FeatureViewModel @Inject constructor() : BaseViewModel() {
     private val _fLivaData = MutableLiveData<String>()
     val fLivaData: LiveData<String> = _fLivaData
 
-    override fun onStart() {
+    override fun onCreate() {
         _fLivaData.value = dData
     }
 
