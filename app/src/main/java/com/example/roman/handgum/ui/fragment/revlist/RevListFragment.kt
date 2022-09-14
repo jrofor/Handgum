@@ -16,6 +16,7 @@ import com.example.roman.handgum.domain.models.ReviewModel
 import com.example.roman.handgum.ui.base.BaseFragment
 import com.example.roman.handgum.ui.fragment.revlist.adapter.ItemDecoration
 import com.example.roman.handgum.ui.fragment.revlist.adapter.ReviewAdapter
+import com.example.roman.handgum.utils.extensions.observe
 import com.example.roman.handgum.utils.rx.viewbinding.viewBinding
 import timber.log.Timber
 import javax.inject.Inject
@@ -46,8 +47,8 @@ class RevListFragment : BaseFragment(R.layout.fragment_rev_list) {
         viewModel.apply {
             lifecycle.addObserver(this)
             documentLiveData.observe({ viewLifecycleOwner.lifecycle }, ::setData)
-            loadingLiveData.observe({ viewLifecycleOwner.lifecycle }, ::setRefreshing)
             noDataLiveData.observe({ viewLifecycleOwner.lifecycle }, ::showNoDataMessage)
+            observe(viewModel.showModalProgress) { setRefreshing(it) }
         }
     }
 
