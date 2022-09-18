@@ -25,7 +25,7 @@ open class BaseFragment(@LayoutRes protected val layoutId: Int) : Fragment(layou
     open val titleRes: Int = R.string.app_name
     open val titleCharSequence: CharSequence by lazy { requireContext().getString(titleRes) }
 
-    open val navigationArguments: NavArgs? = null
+    open val navArgs: NavArgs? = null
     open val isNavigateBackVisible: Boolean = true
 
     override fun onCreate(savedInstanceState: Bundle?) {

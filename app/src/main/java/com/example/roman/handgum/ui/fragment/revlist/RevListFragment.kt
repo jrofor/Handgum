@@ -46,9 +46,9 @@ class RevListFragment : BaseFragment(R.layout.fragment_rev_list) {
         initViews()
         viewModel.apply {
             lifecycle.addObserver(this)
-            documentLiveData.observe({ viewLifecycleOwner.lifecycle }, ::setData)
-            noDataLiveData.observe({ viewLifecycleOwner.lifecycle }, ::showNoDataMessage)
             observe(viewModel.showModalProgress) { setRefreshing(it) }
+            observe(viewModel.reviews) { renderReviews(it) }
+            observe(viewModel.missingDataNotice) { showNoDataMessage(it) }
         }
     }
 
@@ -70,7 +70,7 @@ class RevListFragment : BaseFragment(R.layout.fragment_rev_list) {
         findNavController(this).navigate(actions)
     }
 
-    private fun setData(list: List<ReviewModel>) {
+    private fun renderReviews(list: List<ReviewModel>) {
         reviewAdapter.items = list
     }
 

@@ -1,8 +1,8 @@
 package com.example.roman.handgum.ui.fragment.revdetails
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.roman.handgum.ui.base.BaseViewModel
+import com.example.roman.handgum.utils.extensions.delegate
 import javax.inject.Inject
 
 /**
@@ -10,13 +10,12 @@ import javax.inject.Inject
  */
 class RevDetailsViewModel @Inject constructor() : BaseViewModel() {
 
-    var urlLink = ""
+    val liveState = MutableLiveData(createInitialState())
+    var state: RevDetailsState by liveState.delegate()
 
-    private val _urlLinkLivaData = MutableLiveData<String>()
-    val urlLinkLivaData: LiveData<String> = _urlLinkLivaData
-
-    override fun onCreate() {
-        _urlLinkLivaData.value = urlLink
+    fun setUrlLink(url: String) {
+        state = state.copy(urlLink = url)
     }
 
+    private fun createInitialState() = RevDetailsState(urlLink = "")
 }

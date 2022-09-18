@@ -1,9 +1,7 @@
 package com.example.roman.handgum.ui.fragment.revlist
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.map
-import com.example.roman.handgum.domain.models.ReviewModel
 import com.example.roman.handgum.ui.base.BaseViewModel
 import com.example.roman.handgum.ui.fragment.revlist.interactor.RevListInteractor
 import com.example.roman.handgum.utils.extensions.delegate
@@ -20,14 +18,11 @@ class RevListViewModel @Inject constructor(
     private val revListInteractor: RevListInteractor
 ) : BaseViewModel() {
 
-    private val _documentLiveData = MutableLiveData<List<ReviewModel>>()
-    val documentLiveData: LiveData<List<ReviewModel>> = _documentLiveData
-    private val _noDataLiveData = MutableLiveData<Boolean>()
-    val noDataLiveData: LiveData<Boolean> = _noDataLiveData
-
     private val liveState = MutableLiveData(createInitialState())
     private var state: RevListViewState by liveState.delegate()
     var showModalProgress = liveState.map { it.showProgress }
+    var reviews = liveState.map { it.reviews }
+    var missingDataNotice = liveState.map { it.missingDataNotice }
 
     override fun onCreate() {
         super.onCreate()
@@ -40,11 +35,12 @@ class RevListViewModel @Inject constructor(
             .observeOn(AndroidSchedulers.mainThread())
             .onProgressRefresh()
             .subscribe({ result ->
-                val listIsEmpty = result.get()?.isEmpty() ?: false
-                if (!listIsEmpty) {
-                    _documentLiveData.value = result.get()
+                (result.get()?.isNotEmpty() ?: false).let { listIsNotEmpty ->
+                    if (listIsNotEmpty) {
+                        state = state.copy(reviews = result.get()!!)
+                    }
+                    state = state.copy(missingDataNotice = !listIsNotEmpty)
                 }
-                _noDataLiveData.value = listIsEmpty
             }, { error ->
                 Timber.e(error)
             }).disposeOnCleared()
@@ -56,7 +52,9 @@ class RevListViewModel @Inject constructor(
 
     private fun createInitialState(): RevListViewState {
         return RevListViewState(
-            showProgress = false
+            showProgress = false,
+            reviews = mutableListOf(),
+            missingDataNotice = false,
         )
     }
 

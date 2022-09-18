@@ -12,6 +12,7 @@ import androidx.navigation.fragment.navArgs
 import com.example.roman.handgum.R
 import com.example.roman.handgum.databinding.FragmentRevDetailsBinding
 import com.example.roman.handgum.ui.base.BaseFragment
+import com.example.roman.handgum.utils.extensions.observe
 import com.example.roman.handgum.utils.rx.viewbinding.viewBinding
 import javax.inject.Inject
 
@@ -23,11 +24,31 @@ class RevDetailsFragment : BaseFragment(R.layout.fragment_rev_details) {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
     private val viewModel by viewModels<RevDetailsViewModel> { viewModelFactory }
-        .also { lifecycle.addObserver(it.value) }
 
     override val titleRes = R.string.fragment_rev_details_title
-
+    override val navArgs: RevDetailsFragmentArgs by navArgs()
     private val binding: FragmentRevDetailsBinding by viewBinding()
+
+    override fun initDI() {
+        appComponent.revDetailsComponent().create().inject(this)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initViews()
+        viewModel.apply {
+            viewModel.setUrlLink(navArgs.url)
+            lifecycle.addObserver(this)
+            observe(viewModel.liveState) { setWebViewLoadUrl(it.urlLink) }
+        }
+    }
+
+    private fun initViews() = with(binding) {
+        webView.apply {
+            webViewClient = WebViewClient()
+            webChromeClient = simpleWebChromeClient
+        }
+    }
 
     private var simpleWebChromeClient = object : WebChromeClient() {
         override fun onProgressChanged(view: WebView?, progress: Int) {
@@ -41,32 +62,6 @@ class RevDetailsFragment : BaseFragment(R.layout.fragment_rev_details) {
             }
         }
     }
-    override val navigationArguments: RevDetailsFragmentArgs by navArgs()
-
-    override fun initDI() {
-        appComponent.revDetailsComponent().create().inject(this)
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        initViews()
-        viewModel.urlLink = navigationArguments.url
-        viewModel.apply {
-            lifecycle.addObserver(this)
-            urlLinkLivaData.observe({ viewLifecycleOwner.lifecycle }, ::setWebViewLoadUrl)
-        }
-    }
-
-    private fun initViews() = with(binding) {
-        webView.apply {
-            webViewClient = WebViewClient()
-            webChromeClient = simpleWebChromeClient
-        }
-    }
-
-    private fun setWebViewLoadUrl(url: String) {
-        binding.webView.loadUrl(url)
-    }
 
     private fun showProgressBar(visible: Boolean) {
         binding.progressBar.apply {
@@ -75,4 +70,7 @@ class RevDetailsFragment : BaseFragment(R.layout.fragment_rev_details) {
         }
     }
 
+    private fun setWebViewLoadUrl(url: String) {
+        binding.webView.loadUrl(url)
+    }
 }
