@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rev_details_graph"
+    app:startDestination="@id/revDetailsFragment">
+
+    <fragment
+        android:id="@+id/revDetailsFragment"
+        android:name="com.example.roman.handgum.feature.revdetails.RevDetailsFragment"
+        android:label="RevDetailsFragment"
+        tools:layout="@layout/fragment_rev_details">
+        <argument
+            android:name="url"
+            android:defaultValue=""
+            app:argType="string" />
+    </fragment>
+
+</navigation>

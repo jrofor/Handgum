@@ -1,10 +1,10 @@
 package com.example.roman.handgum.ui.fragment.revlist.interactor
 
+import com.example.roman.handgum.core.utils.rx.ManageNull
 import com.example.roman.handgum.data.db.repository.RevRepository
 import com.example.roman.handgum.data.networkApi.api.ApiWorker
 import com.example.roman.handgum.domain.mappers.ReviewMapper
 import com.example.roman.handgum.domain.models.ReviewModel
-import com.example.roman.handgum.utils.rx.ManageNull
 import io.reactivex.Observable
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject

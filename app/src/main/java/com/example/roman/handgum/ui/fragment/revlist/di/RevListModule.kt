@@ -1,7 +1,7 @@
 package com.example.roman.handgum.ui.fragment.revlist.di
 
 import androidx.lifecycle.ViewModel
-import com.example.roman.handgum.di.ViewModelKey
+import com.example.roman.handgum.core.di.ViewModelKey
 import com.example.roman.handgum.ui.fragment.revlist.RevListViewModel
 import dagger.Binds
 import dagger.Module

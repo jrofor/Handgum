@@ -1,2 +1,6 @@
 rootProject.name = "Handgum"
-include ':app'
+include(':app',
+        ':core',
+        ':feature:revdetails',
+        ':feature:revlist'
+)

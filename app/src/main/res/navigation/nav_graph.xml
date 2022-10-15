@@ -19,16 +19,6 @@
             android:id="@+id/action_revListFragment_to_featureFragment"
             app:destination="@id/featureFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/revDetailsFragment"
-        android:name="com.example.roman.handgum.ui.fragment.revdetails.RevDetailsFragment"
-        android:label="RevDetailsFragment"
-        tools:layout="@layout/fragment_rev_details">
-        <argument
-            android:name="url"
-            android:defaultValue="s"
-            app:argType="string" />
-    </fragment>
 
     <fragment
         android:id="@+id/featureFragment"
@@ -36,4 +26,7 @@
         android:label="FeatureFragment">
 
     </fragment>
+
+    <include app:graph="@navigation/rev_details_graph" />
+
 </navigation>

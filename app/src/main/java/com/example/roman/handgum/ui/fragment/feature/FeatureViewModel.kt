@@ -2,7 +2,7 @@ package com.example.roman.handgum.ui.fragment.feature
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.roman.handgum.ui.base.BaseViewModel
+import com.example.roman.handgum.core.baseview.BaseViewModel
 import javax.inject.Inject
 
 class FeatureViewModel @Inject constructor() : BaseViewModel() {

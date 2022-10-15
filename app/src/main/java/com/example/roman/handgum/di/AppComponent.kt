@@ -1,8 +1,8 @@
 package com.example.roman.handgum.di
 
 import android.content.Context
+import com.example.roman.handgum.core.di.ViewModelBuilderModule
 import com.example.roman.handgum.ui.fragment.feature.di.FeatureComponent
-import com.example.roman.handgum.ui.fragment.revdetails.di.RevDetailsComponent
 import com.example.roman.handgum.ui.fragment.revlist.di.RevListComponent
 import dagger.BindsInstance
 import dagger.Component
@@ -30,6 +30,5 @@ interface AppComponent {
     fun context(): Context
 
     fun revListComponent(): RevListComponent.Factory
-    fun revDetailsComponent(): RevDetailsComponent.Factory
     fun featureComponent(): FeatureComponent.Factory
 }

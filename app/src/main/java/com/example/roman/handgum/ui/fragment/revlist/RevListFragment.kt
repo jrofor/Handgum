@@ -10,14 +10,16 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.roman.handgum.App
 import com.example.roman.handgum.R
+import com.example.roman.handgum.core.baseview.BaseFragment
+import com.example.roman.handgum.core.utils.extensions.observe
+import com.example.roman.handgum.core.utils.viewbinding.viewBinding
 import com.example.roman.handgum.databinding.FragmentRevListBinding
 import com.example.roman.handgum.domain.models.ReviewModel
-import com.example.roman.handgum.ui.base.BaseFragment
+import com.example.roman.handgum.feature.revdetails.RevDetailsFragmentArgs
 import com.example.roman.handgum.ui.fragment.revlist.adapter.ItemDecoration
 import com.example.roman.handgum.ui.fragment.revlist.adapter.ReviewAdapter
-import com.example.roman.handgum.utils.extensions.observe
-import com.example.roman.handgum.utils.rx.viewbinding.viewBinding
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -31,13 +33,13 @@ class RevListFragment : BaseFragment(R.layout.fragment_rev_list) {
     private val viewModel by viewModels<RevListViewModel> { viewModelFactory }
 
     override val isNavigateBackVisible = false
-    override val titleRes = R.string.fragment_rev_list_title
+    //override val titleRes = R.string.fragment_rev_list_title
 
     private val binding: FragmentRevListBinding by viewBinding()
     private val reviewAdapter = ReviewAdapter()
 
     override fun initDI() {
-        appComponent.revListComponent().create().inject(this)
+        (requireActivity().application as App).appComponent.revListComponent().create().inject(this)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -66,8 +68,10 @@ class RevListFragment : BaseFragment(R.layout.fragment_rev_list) {
     }
 
     private fun navigateToRevDetailsFragment(url: String) {
-        val actions = RevListFragmentDirections.actionRevListFragmentToRevDetailsFragment(url)
-        findNavController(this).navigate(actions)
+        findNavController(this).navigate(
+            R.id.rev_details_graph,
+            RevDetailsFragmentArgs(url).toBundle(),
+        )
     }
 
     private fun renderReviews(list: List<ReviewModel>) {

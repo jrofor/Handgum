@@ -2,9 +2,9 @@ package com.example.roman.handgum.ui.fragment.revlist
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.map
-import com.example.roman.handgum.ui.base.BaseViewModel
+import com.example.roman.handgum.core.baseview.BaseViewModel
+import com.example.roman.handgum.core.utils.extensions.delegate
 import com.example.roman.handgum.ui.fragment.revlist.interactor.RevListInteractor
-import com.example.roman.handgum.utils.extensions.delegate
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers

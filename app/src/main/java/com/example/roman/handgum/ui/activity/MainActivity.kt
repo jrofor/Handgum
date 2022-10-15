@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
 
         if (BuildConfig.DEBUG) {
             Timber.plant(object : Timber.DebugTree() {
-                override fun createStackElementTag(element: StackTraceElement): String? {
+                override fun createStackElementTag(element: StackTraceElement): String {
                     return super.createStackElementTag(element) + ":" + element.lineNumber
                 }
 
