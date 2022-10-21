@@ -1,10 +1,11 @@
 package com.example.roman.handgum.ui.fragment.revlist.interactor
 
 import com.example.roman.handgum.core.utils.rx.ManageNull
-import com.example.roman.handgum.data.db.repository.RevRepository
 import com.example.roman.handgum.data.networkApi.api.ApiWorker
-import com.example.roman.handgum.domain.mappers.ReviewMapper
-import com.example.roman.handgum.domain.models.ReviewModel
+import com.example.roman.handgum.data.networkApi.models.response.MovieRevResponse
+import com.example.roman.handgum.database.domain.mappers.ReviewMapper
+import com.example.roman.handgum.database.domain.models.ReviewModel
+import com.example.roman.handgum.database.repository.RevRepository
 import io.reactivex.Observable
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
@@ -39,13 +40,32 @@ class RevListInteractor @Inject constructor(
 
     private fun loadReviewFromApi(): Observable<ManageNull<List<ReviewModel>?>> {
         return apiWorker.getMovieReviews()
-            .map { response -> reviewMapper.responseListToModelList(response.results) }
+            .map { response -> responseListToModelList(response.results) }
             .doOnSuccess { saveReviewToDb(it) }
             .toObservable()
             .flatMap { getReviewFromDb() }
             .onErrorReturn { ManageNull(emptyList()) }
             .observeOn(Schedulers.io())
     }
+
+    private fun responseListToModelList(results: List<MovieRevResponse.ReviewDTO>) =
+        mutableListOf<ReviewModel>().apply {
+            results.forEach {
+                add(
+                    ReviewModel(
+                        displayTitle = it.displayTitle,
+                        mpaaRating = it.mpaaRating,
+                        publicationDate = it.publicationDate,
+                        headline = it.headline,
+                        summaryShort = it.summaryShort,
+                        url = it.link.url,
+                        src = it.multimedia.src,
+                        width = it.multimedia.width,
+                        height = it.multimedia.height,
+                    )
+                )
+            }
+        }
 
     private fun saveReviewToDb(review: List<ReviewModel>) {
         revRepository.deleteAll()

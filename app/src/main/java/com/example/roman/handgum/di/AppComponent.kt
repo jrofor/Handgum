@@ -2,6 +2,7 @@ package com.example.roman.handgum.di
 
 import android.content.Context
 import com.example.roman.handgum.core.di.ViewModelBuilderModule
+import com.example.roman.handgum.database.di.DatabaseDependencies
 import com.example.roman.handgum.ui.fragment.feature.di.FeatureComponent
 import com.example.roman.handgum.ui.fragment.revlist.di.RevListComponent
 import dagger.BindsInstance
@@ -17,11 +18,11 @@ import javax.inject.Singleton
     modules = [
         AppModule::class,
         ViewModelBuilderModule::class,
-        MapperModule::class,
-        RepositoryModule::class
+        //provides dependencies from itself module for classes in other modules
+        DatabaseDependenciesModule::class
     ]
 )
-interface AppComponent {
+interface AppComponent : DatabaseDependencies {
     @Component.Factory
     interface Factory {
         fun create(@BindsInstance applicationContext: Context): AppComponent

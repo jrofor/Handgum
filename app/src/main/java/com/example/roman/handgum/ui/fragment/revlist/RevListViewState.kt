@@ -1,6 +1,6 @@
 package com.example.roman.handgum.ui.fragment.revlist
 
-import com.example.roman.handgum.domain.models.ReviewModel
+import com.example.roman.handgum.database.domain.models.ReviewModel
 
 data class RevListViewState(
     val showProgress: Boolean,

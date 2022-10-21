@@ -9,8 +9,8 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
 import com.example.roman.handgum.R
+import com.example.roman.handgum.database.domain.models.ReviewModel
 import com.example.roman.handgum.databinding.ItemReviewBinding
-import com.example.roman.handgum.domain.models.ReviewModel
 
 /**
  * @author rofor

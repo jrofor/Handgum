@@ -3,6 +3,7 @@ package com.example.roman.handgum.core.utils.rx
 /**
  * @author rofor
  */
+@Suppress("UNCHECKED_CAST")
 class ManageNull<T>(private val value: T?) {
     fun get(): T? {
         return value

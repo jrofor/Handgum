@@ -16,7 +16,7 @@ import com.example.roman.handgum.core.baseview.BaseFragment
 import com.example.roman.handgum.core.utils.extensions.observe
 import com.example.roman.handgum.core.utils.viewbinding.viewBinding
 import com.example.roman.handgum.databinding.FragmentRevListBinding
-import com.example.roman.handgum.domain.models.ReviewModel
+import com.example.roman.handgum.database.domain.models.ReviewModel
 import com.example.roman.handgum.feature.revdetails.RevDetailsFragmentArgs
 import com.example.roman.handgum.ui.fragment.revlist.adapter.ItemDecoration
 import com.example.roman.handgum.ui.fragment.revlist.adapter.ReviewAdapter

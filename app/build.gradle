@@ -26,8 +26,6 @@ android {
         /*
         * Global constants
         */
-        buildConfigField('int', 'DB_VERSION', '1')
-        buildConfigField('String', 'DB_FILE_NAME', '"handgum.db"')
         buildConfigField('long', 'TIMEOUT', '180')
 
         buildConfigField('String', 'BASE_URL', '"https://api.nytimes.com/"')
@@ -57,6 +55,7 @@ android {
 dependencies {
 
     implementation project(':core')
+    implementation project(':database')
     implementation project(':feature:revdetails')
     implementation project(':feature:revlist')
 

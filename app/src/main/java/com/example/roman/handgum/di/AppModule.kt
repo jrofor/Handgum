@@ -1,9 +1,6 @@
 package com.example.roman.handgum.di
 
-import android.content.Context
-import androidx.room.Room
 import com.example.roman.handgum.BuildConfig
-import com.example.roman.handgum.data.db.AppDatabase
 import com.example.roman.handgum.data.networkApi.ApiKeyInterceptor
 import com.example.roman.handgum.data.networkApi.api.Api
 import com.example.roman.handgum.data.networkApi.api.ApiWorker
@@ -25,12 +22,6 @@ import javax.inject.Singleton
  */
 @Module
 class AppModule {
-
-    @Provides
-    @Singleton
-    fun appDatabase(context: Context) =
-        Room.databaseBuilder(context, AppDatabase::class.java, BuildConfig.DB_FILE_NAME)
-            .build()
 
     @Provides
     @Singleton
