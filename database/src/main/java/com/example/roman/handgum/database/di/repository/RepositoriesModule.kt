@@ -12,6 +12,6 @@ import dagger.Module
 abstract class RepositoriesModule {
 
     @Binds
-    abstract fun revRepository(RevRepImpl: RevRepositoryImpl): RevRepository
+    abstract fun revRepository(revRepImpl: RevRepositoryImpl): RevRepository
 
 }

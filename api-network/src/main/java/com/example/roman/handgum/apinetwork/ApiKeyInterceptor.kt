@@ -1,4 +1,4 @@
-package com.example.roman.handgum.data.networkApi
+package com.example.roman.handgum.apinetwork
 
 import okhttp3.HttpUrl
 import okhttp3.Interceptor
@@ -8,7 +8,7 @@ import okhttp3.Response
 /**
  * @author rofor
  */
-class ApiKeyInterceptor constructor(var apiKey: String) : Interceptor {
+internal class ApiKeyInterceptor constructor(var apiKey: String) : Interceptor {
 
     override fun intercept(chain: Interceptor.Chain): Response {
         val requestWithoutApiKey: Request = chain.request()

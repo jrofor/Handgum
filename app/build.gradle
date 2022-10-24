@@ -22,16 +22,6 @@ android {
         versionCode 1
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
-        /*
-        * Global constants
-        */
-        buildConfigField('long', 'TIMEOUT', '180')
-
-        buildConfigField('String', 'BASE_URL', '"https://api.nytimes.com/"')
-
-        buildConfigField('String', 'API_KEY', '"xTvrIaqsho3wZBAPUcJP7H8KqBl9cSaG"')
-        signingConfig signingConfigs.debug
     }
 
     buildTypes {
@@ -56,6 +46,7 @@ dependencies {
 
     implementation project(':core')
     implementation project(':database')
+    implementation project(':api-network')
     implementation project(':feature:revdetails')
     implementation project(':feature:revlist')
 
@@ -82,19 +73,6 @@ dependencies {
     */
     implementation "com.github.bumptech.glide:glide:4.13.2"
 
-    /*
-    * Api
-    */
-    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
-    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.9.0'
-    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
-
-    /*
-    * Okhttp3
-    */
-    implementation 'com.squareup.okhttp3:okhttp:4.10.0'
-    implementation 'com.squareup.okhttp3:logging-interceptor:4.9.0'
-    implementation "com.squareup.okio:okio:3.0.0"
     /*
     * Lifecycle
     */

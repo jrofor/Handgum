@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 
 /**
  * connected classes
- * [com.example.roman.handgum.data.networkApi.models.response.MovieRevResponse]
+ * [com.example.roman.handgum.apinetwork.response.MovieRevResponse]
  * [com.example.roman.handgum.database.domain.models.ReviewModel]
  * @author rofor
  */

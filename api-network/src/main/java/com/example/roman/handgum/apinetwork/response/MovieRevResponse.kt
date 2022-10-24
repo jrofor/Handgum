@@ -1,10 +1,10 @@
-package com.example.roman.handgum.data.networkApi.models.response
+package com.example.roman.handgum.apinetwork.response
 
 import com.google.gson.annotations.SerializedName
 
 /**
  * connected classes
- * [com.example.roman.handgum.data.networkApi.models.response.MovieRevResponse]
+ * [com.example.roman.handgum.database.domain.models.ReviewModel]
  * [com.example.roman.handgum.database.entity.ReviewEntity]
  * @author rofor
  */

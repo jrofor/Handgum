@@ -1,10 +1,11 @@
-package com.example.roman.handgum.di
+package com.example.roman.handgum.apinetwork.di
 
-import com.example.roman.handgum.BuildConfig
-import com.example.roman.handgum.data.networkApi.ApiKeyInterceptor
-import com.example.roman.handgum.data.networkApi.api.Api
-import com.example.roman.handgum.data.networkApi.api.ApiWorker
-import com.example.roman.handgum.data.networkApi.api.ApiWorkerImpl
+
+import com.example.roman.handgum.apinetwork.ApiKeyInterceptor
+import com.example.roman.handgum.apinetwork.BuildConfig
+import com.example.roman.handgum.apinetwork.api.Api
+import com.example.roman.handgum.apinetwork.api.ApiWorker
+import com.example.roman.handgum.apinetwork.api.ApiWorkerImpl
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module
@@ -21,7 +22,7 @@ import javax.inject.Singleton
  * @author rofor
  */
 @Module
-class AppModule {
+internal class ApiNetworkModule {
 
     @Provides
     @Singleton

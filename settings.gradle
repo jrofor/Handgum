@@ -1,7 +1,8 @@
 rootProject.name = "Handgum"
 include(':app',
         ':core',
+        ':api-network',
         ':database',
+        ':feature:revlist',
         ':feature:revdetails',
-        ':feature:revlist'
 )

@@ -1,6 +1,6 @@
-package com.example.roman.handgum.data.networkApi.api
+package com.example.roman.handgum.apinetwork.api
 
-import com.example.roman.handgum.data.networkApi.models.response.MovieRevResponse
+import com.example.roman.handgum.apinetwork.response.MovieRevResponse
 import io.reactivex.Single
 import retrofit2.http.GET
 
@@ -8,7 +8,7 @@ import retrofit2.http.GET
  * Api calls for Retrofit
  * @author rofor
  */
-interface Api {
+internal interface Api {
 
     @GET("svc/movies/v2/reviews/all.json")
     fun getMovieReviews(): Single<MovieRevResponse>

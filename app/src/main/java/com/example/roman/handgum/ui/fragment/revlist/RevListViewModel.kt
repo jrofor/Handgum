@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.map
 import com.example.roman.handgum.core.baseview.BaseViewModel
 import com.example.roman.handgum.core.utils.extensions.delegate
-import com.example.roman.handgum.ui.fragment.revlist.interactor.RevListInteractor
+import com.example.roman.handgum.ui.fragment.revlist.domain.RevListInteractor
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -59,6 +59,7 @@ class RevListViewModel @Inject constructor(
     }
 
     private fun <T> Observable<T>.onProgressRefresh() =
-        doOnSubscribe { state = state.copy(showProgress = true) }
-            .doAfterTerminate { state = state.copy(showProgress = false) }
+        doOnSubscribe { state = state.copy(showProgress = true) }.doAfterTerminate {
+            state = state.copy(showProgress = false)
+        }
 }

@@ -17,7 +17,7 @@ class ManageNull<T>(private val value: T?) {
             return NULL_REF as ManageNull<T>
         }
 
-        fun <T> of(value: T?): ManageNull<T?> {
+        fun <T> of(value: T?): ManageNull<T> {
             return ManageNull(value)
         }
     }

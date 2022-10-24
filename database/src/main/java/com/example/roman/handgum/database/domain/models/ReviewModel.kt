@@ -2,7 +2,7 @@ package com.example.roman.handgum.database.domain.models
 
 /**
  *connected classes
- * [com.example.roman.handgum.data.networkApi.models.response.MovieRevResponse]
+ * [com.example.roman.handgum.apinetwork.response.MovieRevResponse]
  * [com.example.roman.handgum.database.entity.ReviewEntity]
  * @author rofor
  */
