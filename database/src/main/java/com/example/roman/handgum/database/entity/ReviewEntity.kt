@@ -6,8 +6,8 @@ import androidx.room.PrimaryKey
 
 /**
  * connected classes
- * [com.example.roman.handgum.apinetwork.response.MovieRevResponse]
- * [com.example.roman.handgum.database.domain.models.ReviewModel]
+ * [com.example.roman.handgum.commonentity.network.response.MovieRevResponse]
+ * [com.example.roman.handgum.commonentity.ui.models.ReviewModel]
  * @author rofor
  */
 @Entity(tableName = "Review")

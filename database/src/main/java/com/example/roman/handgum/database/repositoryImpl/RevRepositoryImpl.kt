@@ -1,9 +1,9 @@
 package com.example.roman.handgum.database.repositoryImpl
 
+import com.example.roman.handgum.commonentity.db.repository.RevRepository
+import com.example.roman.handgum.commonentity.ui.models.ReviewModel
 import com.example.roman.handgum.database.AppDatabase
 import com.example.roman.handgum.database.domain.mappers.ReviewMapper
-import com.example.roman.handgum.database.domain.models.ReviewModel
-import com.example.roman.handgum.database.repository.RevRepository
 import javax.inject.Inject
 import javax.inject.Singleton
 

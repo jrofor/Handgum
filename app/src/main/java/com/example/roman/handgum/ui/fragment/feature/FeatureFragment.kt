@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
-import com.example.roman.handgum.App
 import com.example.roman.handgum.R
 import com.example.roman.handgum.core.baseview.BaseFragment
 import com.example.roman.handgum.databinding.FragmentFeatureBinding
@@ -27,7 +26,7 @@ class FeatureFragment : BaseFragment(R.layout.fragment_feature) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        (requireActivity().application as App).appComponent.featureComponent().create().inject(this)
+        //  (requireActivity().application as App).appComponent.featureComponent().create().inject(this)
     }
 
     override fun onCreateView(

@@ -1,7 +1,7 @@
 package com.example.roman.handgum.database.domain.mappers
 
+import com.example.roman.handgum.commonentity.ui.models.ReviewModel
 import com.example.roman.handgum.database.domain.mappers.base.BaseCommonMapper
-import com.example.roman.handgum.database.domain.models.ReviewModel
 import com.example.roman.handgum.database.entity.ReviewEntity
 import org.mapstruct.Mapper
 import org.mapstruct.Mapping

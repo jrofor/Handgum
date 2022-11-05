@@ -1,6 +1,6 @@
 package com.example.roman.handgum.apinetwork.di
 
-import com.example.roman.handgum.apinetwork.api.ApiWorker
+import com.example.roman.handgum.commonentity.network.ApiWorker
 import dagger.Component
 import javax.inject.Singleton
 

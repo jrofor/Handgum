@@ -1,6 +1,7 @@
 package com.example.roman.handgum.core.baseview
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.annotation.LayoutRes
@@ -23,8 +24,8 @@ open class BaseFragment(@LayoutRes protected val layoutId: Int) : Fragment(layou
     open val navArgs: NavArgs? = null
     open val isNavigateBackVisible: Boolean = true
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
         initDI()
     }
 

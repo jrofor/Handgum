@@ -1,6 +1,6 @@
 package com.example.roman.handgum.apinetwork.api
 
-import com.example.roman.handgum.apinetwork.response.MovieRevResponse
+import com.example.roman.handgum.commonentity.network.response.MovieRevResponse
 import io.reactivex.Single
 import retrofit2.http.GET
 

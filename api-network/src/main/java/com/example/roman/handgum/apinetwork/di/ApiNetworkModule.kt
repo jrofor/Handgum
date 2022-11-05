@@ -4,8 +4,8 @@ package com.example.roman.handgum.apinetwork.di
 import com.example.roman.handgum.apinetwork.ApiKeyInterceptor
 import com.example.roman.handgum.apinetwork.BuildConfig
 import com.example.roman.handgum.apinetwork.api.Api
-import com.example.roman.handgum.apinetwork.api.ApiWorker
 import com.example.roman.handgum.apinetwork.api.ApiWorkerImpl
+import com.example.roman.handgum.commonentity.network.ApiWorker
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module
