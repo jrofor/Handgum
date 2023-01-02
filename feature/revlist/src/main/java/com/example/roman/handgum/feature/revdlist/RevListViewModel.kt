@@ -5,6 +5,7 @@ import androidx.lifecycle.map
 import com.example.roman.handgum.core.baseview.BaseViewModel
 import com.example.roman.handgum.core.utils.extensions.delegate
 import com.example.roman.handgum.feature.revdlist.domain.RevListInteractor
+import com.example.roman.handgum.navigationapi.revdetails.RevDetailsNavigator
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -15,7 +16,8 @@ import javax.inject.Inject
  * @author rofor
  */
 class RevListViewModel @Inject constructor(
-    private val revListInteractor: RevListInteractor
+    private val revListInteractor: RevListInteractor,
+    private val navigator: RevDetailsNavigator
 ) : BaseViewModel() {
 
     private val liveState = MutableLiveData(createInitialState())
@@ -27,6 +29,14 @@ class RevListViewModel @Inject constructor(
     override fun onCreate() {
         super.onCreate()
         loadReview(true)
+    }
+
+    fun onRefresh() {
+        loadReview(false)
+    }
+
+    fun itemClicked(url: String) {
+        navigator.pushRevDetailsScreen(url)
     }
 
     private fun loadReview(isFirstLoading: Boolean) {
@@ -44,10 +54,6 @@ class RevListViewModel @Inject constructor(
             }, { error ->
                 Timber.e(error)
             }).disposeOnCleared()
-    }
-
-    fun onRefresh() {
-        loadReview(false)
     }
 
     private fun createInitialState(): RevListViewState {

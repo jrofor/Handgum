@@ -16,7 +16,6 @@ import com.example.roman.handgum.feature.revdlist.adapter.ReviewAdapter
 import com.example.roman.handgum.feature.revdlist.di.DaggerRevListComponent
 import com.example.roman.handgum.feature.revlist.R
 import com.example.roman.handgum.feature.revlist.databinding.FragmentRevListBinding
-import timber.log.Timber
 import javax.inject.Inject
 
 /**
@@ -58,16 +57,9 @@ class RevListFragment : BaseFragment(R.layout.fragment_rev_list) {
             layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
             addItemDecoration(ItemDecoration(resources.getDimensionPixelOffset(R.dimen.review_item_offset)))
             adapter = this@RevListFragment.reviewAdapter.apply {
-                onItemClickListener = { navigateToRevDetailsFragment(url = it) }
+                onItemClickListener = { viewModel.itemClicked(url = it) }
             }
         }
-    }
-
-    private fun navigateToRevDetailsFragment(url: String) {
-/*        findNavController(this).navigate(
-            R.id.rev_details_graph,
-            RevDetailsFragmentArgs(url).toBundle(),
-        )*/
     }
 
     private fun renderReviews(list: List<ReviewModel>) {
@@ -108,7 +100,6 @@ class RevListFragment : BaseFragment(R.layout.fragment_rev_list) {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        Timber.tag("ViewBinding").v("RevListFragment onDestroyView")
     }
 
 }

@@ -4,6 +4,8 @@ include(':app',
         ':common-entity',
         ':api-network',
         ':database',
+        ':navigation',
+        ':navigation-api',
         ':feature:revlist',
         ':feature:revdetails',
 )

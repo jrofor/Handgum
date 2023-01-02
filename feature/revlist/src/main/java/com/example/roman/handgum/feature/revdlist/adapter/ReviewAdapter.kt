@@ -12,6 +12,7 @@ import com.example.roman.handgum.commonentity.ui.models.ReviewModel
 import com.example.roman.handgum.feature.revlist.R
 import com.example.roman.handgum.feature.revlist.databinding.ItemReviewBinding
 
+
 /**
  * @author rofor
  */
@@ -76,7 +77,7 @@ class ReviewAdapter : RecyclerView.Adapter<ReviewAdapter.ReviewViewHolder>() {
                 tvSummaryShort.text = item.summaryShort
                 imageLoader.load(item.src)
                     .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.AUTOMATIC))
-                    .thumbnail(0.3f)
+                    .thumbnail(imageLoader.asDrawable().sizeMultiplier(0.3f))
                     .transition(DrawableTransitionOptions.withCrossFade())
                     .into(ivMultimedia)
             }

@@ -5,11 +5,14 @@ import android.view.View
 import android.webkit.WebChromeClient
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import androidx.activity.OnBackPressedCallback
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import com.example.roman.handgum.core.baseview.BaseFragment
+import com.example.roman.handgum.core.di.findDependencies
 import com.example.roman.handgum.core.utils.extensions.observe
 import com.example.roman.handgum.core.utils.viewbinding.viewBinding
 import com.example.roman.handgum.feature.revdetails.databinding.FragmentRevDetailsBinding
@@ -30,17 +33,23 @@ class RevDetailsFragment : BaseFragment(R.layout.fragment_rev_details) {
     private val binding: FragmentRevDetailsBinding by viewBinding()
 
     override fun initDI() {
-        DaggerRevDetailsComponent.factory().create().inject(this)
+        DaggerRevDetailsComponent.factory().create(findDependencies()).inject(this)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initViews()
         viewModel.apply {
-            viewModel.setUrlLink(navArgs.url)
             lifecycle.addObserver(this)
+            viewModel.setUrlLink(navArgs.url)
             observe(viewModel.liveState) { setWebViewLoadUrl(it.urlLink) }
         }
+        val callback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                viewModel.onBackPressed()
+            }
+        }
+        activity?.onBackPressedDispatcher?.addCallback(viewLifecycleOwner, callback)
     }
 
     private fun initViews() = with(binding) {
@@ -52,12 +61,14 @@ class RevDetailsFragment : BaseFragment(R.layout.fragment_rev_details) {
 
     private var simpleWebChromeClient = object : WebChromeClient() {
         override fun onProgressChanged(view: WebView?, progress: Int) {
-            binding.progressBar.apply {
-                if (progress in 0..99) {
-                    if (!isVisible) showProgressBar(true)
-                    setProgress(progress)
-                } else {
-                    showProgressBar(false)
+            if (this@RevDetailsFragment.lifecycle.currentState.isAtLeast(Lifecycle.State.RESUMED)) {
+                binding.progressBar.apply {
+                    if (progress in 0..99) {
+                        if (!isVisible) showProgressBar(true)
+                        setProgress(progress)
+                    } else {
+                        showProgressBar(false)
+                    }
                 }
             }
         }

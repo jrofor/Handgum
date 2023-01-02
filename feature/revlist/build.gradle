@@ -38,6 +38,7 @@ dependencies {
 
     implementation project(':core')
     implementation project(':common-entity')
+    implementation project(':navigation-api')
 
     //Views
     implementation "androidx.constraintlayout:constraintlayout:2.1.4"

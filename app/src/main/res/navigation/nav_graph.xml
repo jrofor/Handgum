@@ -27,6 +27,6 @@
 
     </fragment>
 
-    <include app:graph="@navigation/rev_details_graph" />
+  <include app:graph="@navigation/rev_details_graph" />
 
 </navigation>

@@ -5,9 +5,7 @@ import com.example.roman.handgum.database.di.repository.RepositoriesModule
 import com.example.roman.handgum.database.domain.mappers.ReviewMapper
 import com.example.roman.handgum.database.repositoryImpl.RevRepositoryImpl
 import dagger.Component
-import javax.inject.Singleton
 
-@Singleton
 @Component(
     dependencies = [DatabaseDependencies::class],
     modules = [

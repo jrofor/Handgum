@@ -19,6 +19,8 @@
                         <option value="$PROJECT_DIR$/feature" />
                         <option value="$PROJECT_DIR$/feature/revdetails" />
                         <option value="$PROJECT_DIR$/feature/revlist" />
+                        <option value="$PROJECT_DIR$/navigation" />
+                        <option value="$PROJECT_DIR$/navigation-api" />
                     </set>
                 </option>
             </GradleProjectSettings>

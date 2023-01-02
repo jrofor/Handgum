@@ -8,15 +8,16 @@ import dagger.Component
  * @author rofor
  */
 @Component(
+    dependencies = [RevDetailsDependencies::class],
     modules = [
         RevDetailsModule::class,
         ViewModelBuilderModule::class
     ]
 )
-interface RevDetailsComponent {
+internal interface RevDetailsComponent {
     @Component.Factory
     interface Factory {
-        fun create(): RevDetailsComponent
+        fun create(deps: RevDetailsDependencies): RevDetailsComponent
     }
 
     fun inject(fragment: RevDetailsFragment)

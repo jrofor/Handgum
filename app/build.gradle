@@ -48,6 +48,8 @@ dependencies {
     implementation project(':common-entity')
     implementation project(':database')
     implementation project(':api-network')
+    implementation project(':navigation')
+    implementation project(':navigation-api')
     implementation project(':feature:revdetails')
     implementation project(':feature:revlist')
 

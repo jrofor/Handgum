@@ -5,12 +5,10 @@ import com.example.roman.handgum.commonentity.ui.models.ReviewModel
 import com.example.roman.handgum.database.AppDatabase
 import com.example.roman.handgum.database.domain.mappers.ReviewMapper
 import javax.inject.Inject
-import javax.inject.Singleton
 
 /**
  * @author rofor
  */
-@Singleton
 class RevRepositoryImpl @Inject constructor(revMapper: ReviewMapper, appDatabase: AppDatabase) :
     RevRepository {
 
