@@ -1,7 +1,7 @@
 [versions]
 plugin-android = "7.4.1"
 plugin-kotlin = "1.8.0"
-plugin-gver = "0.44.0"
+plugin-gver = "0.46.0"
 
 navigation = "2.5.3"
 
