@@ -1,6 +1,13 @@
 rootProject.name = "Handgum"
 
-enableFeaturePreview("VERSION_CATALOGS")
+pluginManagement {
+    includeBuild("build-logic")
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
 
 include(
     ":app",

@@ -1,20 +1,16 @@
 plugins {
-    id("com.android.application")
-    id("kotlin-kapt")
-    id("kotlin-android")
-    id("androidx.navigation.safeargs.kotlin")
+    id("handgum.android.application")
 }
 
 android {
-    compileSdk = 33
 
     defaultConfig {
         applicationId = "com.example.roman.handgum"
-        minSdk = 21
-        targetSdk = 33
         versionCode = 1
-
+        multiDexEnabled = true
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        namespace = "com.example.roman.handgum"
     }
 
     buildTypes {
@@ -22,16 +18,6 @@ android {
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"))
         }
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
-    buildFeatures {
-        viewBinding = true
     }
 }
 

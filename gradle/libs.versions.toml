@@ -1,7 +1,14 @@
 [versions]
 plugin-android = "7.4.1"
-plugin-kotlin = "1.8.0"
-plugin-gver = "0.46.0"
+plugin-kotlin = "1.8.10"
+plugin-gver = "0.44.0"
+
+#gradle settings
+targetSdk = "33"
+compileSdk = "33"
+minSdk = "21"
+
+androidDesugarJdkLibs = "1.1.5"
 
 navigation = "2.5.3"
 
@@ -50,6 +57,7 @@ plugin-gver = { module = "com.github.ben-manes:gradle-versions-plugin", version.
 # framework for navigating between 'destinations' within an Android application that provides stable API
 plugin-navigation-args = { module = "androidx.navigation:navigation-safe-args-gradle-plugin", version.ref = "navigation" }
 
+android-desugarJdkLibs = { group = "com.android.tools", name = "desugar_jdk_libs", version.ref = "androidDesugarJdkLibs" }
 
 dagger = { module = "com.google.dagger:dagger", version.ref = "dagger" }
 dagger-compiler = { module = "com.google.dagger:dagger-compiler", version.ref = "dagger" }
