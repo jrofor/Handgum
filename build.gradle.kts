@@ -21,7 +21,7 @@ allprojects {
     }
 // to use, enter in the terminal:
 // ./gradlew dependencyUpdates
-// or init in AS Tool appName->Tasks->help->dependencyUpdates
+// or init in AS Tools->Gradle->appName->Tasks->help->dependencyUpdates
 // Report: build/dependencyUpdates/report.txt
     apply(plugin = "com.github.ben-manes.versions")
 }

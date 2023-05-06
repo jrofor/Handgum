@@ -1,6 +1,10 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
 
     <!--RevDetailsFragment-->
     <string name="fragment_rev_details_title">more</string>
+    <string name="fragment_rev_details_button_back">Back</string>
+    <string name="fragment_rev_details_image_content_description">MultiMedia</string>
+    <string name="fragment_rev_details_mpaa_title">MPAA: %1$s</string>
+    <string name="fragment_rev_details_byline_title">By %1$s</string>
 
 </resources>

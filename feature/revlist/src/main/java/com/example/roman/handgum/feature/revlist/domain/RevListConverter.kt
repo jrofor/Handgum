@@ -1,4 +1,4 @@
-package com.example.roman.handgum.feature.revdlist.domain
+package com.example.roman.handgum.feature.revlist.domain
 
 import com.example.roman.handgum.commonentity.network.response.MovieRevResponse
 import com.example.roman.handgum.commonentity.ui.models.ReviewModel
@@ -21,6 +21,7 @@ class RevConverterImpl @Inject constructor() : RevConverter() {
         ReviewModel(
             displayTitle = displayTitle,
             mpaaRating = mpaaRating,
+            byline = byline,
             publicationDate = publicationDate,
             headline = headline,
             summaryShort = summaryShort,

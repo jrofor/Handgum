@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/revDetailsFragment"
-        android:name="com.example.roman.handgum.feature.revdetails.RevDetailsFragment"
+        android:name="com.example.roman.handgum.feature.revdetails.view.RevDetailsFragment"
         android:label="RevDetailsFragment"
         tools:layout="@layout/fragment_rev_details">
         <argument

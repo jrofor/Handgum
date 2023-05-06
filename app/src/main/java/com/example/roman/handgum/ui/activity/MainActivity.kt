@@ -7,7 +7,11 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.example.roman.handgum.R
 import com.example.roman.handgum.databinding.ActivityMainBinding
-import com.example.roman.handgum.navigation.*
+import com.example.roman.handgum.navigation.ActivityNavController
+import com.example.roman.handgum.navigation.BuildConfig
+import com.example.roman.handgum.navigation.NAVIGATION_PROVIDER_STUB
+import com.example.roman.handgum.navigation.NavProviderKeeper
+import com.example.roman.handgum.navigation.NavigationActionProvider
 import dagger.android.AndroidInjection
 import timber.log.Timber
 import javax.inject.Inject

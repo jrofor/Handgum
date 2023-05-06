@@ -1,21 +1,24 @@
 package com.example.roman.handgum.core.baseview
 
 import android.annotation.SuppressLint
+import android.content.ActivityNotFoundException
 import android.content.Context
+import android.content.Intent
+import android.content.Intent.ACTION_VIEW
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavArgs
+import com.example.roman.handgum.core.R
 import timber.log.Timber
 
 /**
  * @author rofor
  */
 open class BaseFragment(@LayoutRes protected val layoutId: Int) : Fragment(layoutId) {
-
-    //open val titleRes: Int? = null
-    //open val titleCharSequence: CharSequence by lazy { requireContext().getString(titleRes)}
 
     open val navArgs: NavArgs? = null
     open val isNavigateBackVisible: Boolean = true
@@ -40,11 +43,6 @@ open class BaseFragment(@LayoutRes protected val layoutId: Int) : Fragment(layou
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         logFragmentLifecycle("onViewCreated")
-        /*mainActivity.supportActionBar?.apply {
-            title = titleCharSequence
-            setDisplayHomeAsUpEnabled(isNavigateBackVisible)
-            setShowHideAnimationEnabled(false)
-        }*/
     }
 
     override fun onPause() {
@@ -60,5 +58,17 @@ open class BaseFragment(@LayoutRes protected val layoutId: Int) : Fragment(layou
     override fun onDestroyView() {
         logFragmentLifecycle("onDestroyView")
         super.onDestroyView()
+    }
+
+    fun openUrl(url: String) {
+        try {
+            startActivity(Intent(ACTION_VIEW, Uri.parse(url)))
+        } catch (e: ActivityNotFoundException) {
+            Toast.makeText(
+                requireContext(),
+                R.string.intent_error_recommendation_install_browser,
+                Toast.LENGTH_SHORT
+            ).show()
+        }
     }
 }

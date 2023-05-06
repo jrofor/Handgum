@@ -1,4 +1,4 @@
-package com.example.roman.handgum.feature.revdlist.di
+package com.example.roman.handgum.feature.revlist.di
 
 import com.example.roman.handgum.commonentity.db.repository.RevRepository
 import com.example.roman.handgum.commonentity.network.ApiWorker

@@ -18,6 +18,8 @@ data class MovieRevResponse(
         var displayTitle: String = "",
         @SerializedName("mpaa_rating")
         var mpaaRating: String = "",
+        @SerializedName("byline")
+        var byline: String = "",
         @SerializedName("publication_date")
         var publicationDate: String = "",
         @SerializedName("headline")

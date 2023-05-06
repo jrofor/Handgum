@@ -26,4 +26,11 @@ gradlePlugin {
                 "com.example.roman.handgum.conventionplugins.AndroidLibraryConventionPlugin"
         }
     }
+    plugins {
+        register("androidLibraryCompose") {
+            id = "handgum.android.library.compose"
+            implementationClass =
+                "com.example.roman.handgum.conventionplugins.AndroidLibraryComposeConventionPlugin"
+        }
+    }
 }

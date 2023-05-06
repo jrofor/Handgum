@@ -11,6 +11,8 @@ data class ReviewModel(
 
     var mpaaRating: String = "",
 
+    var byline: String = "",
+
     var publicationDate: String = "",
 
     var headline: String = "",

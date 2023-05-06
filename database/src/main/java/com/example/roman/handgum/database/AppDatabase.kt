@@ -9,7 +9,6 @@ import com.example.roman.handgum.database.entity.ReviewEntity
  * @author rofor
  */
 @Database(
-    exportSchema = false,
     version = BuildConfig.DB_VERSION,
     entities = [
         ReviewEntity::class]

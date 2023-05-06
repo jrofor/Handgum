@@ -1,10 +1,9 @@
-package com.example.roman.handgum.feature.revdlist
+package com.example.roman.handgum.feature.revlist
 
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.map
 import com.example.roman.handgum.core.baseview.BaseViewModel
 import com.example.roman.handgum.core.utils.extensions.delegate
-import com.example.roman.handgum.feature.revdlist.domain.RevListInteractor
+import com.example.roman.handgum.feature.revlist.domain.RevListInteractor
 import com.example.roman.handgum.navigationapi.revdetails.RevDetailsNavigator
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -20,11 +19,8 @@ class RevListViewModel @Inject constructor(
     private val navigator: RevDetailsNavigator
 ) : BaseViewModel() {
 
-    private val liveState = MutableLiveData(createInitialState())
+    val liveState = MutableLiveData(createInitialState())
     private var state: RevListViewState by liveState.delegate()
-    var showModalProgress = liveState.map { it.showProgress }
-    var reviews = liveState.map { it.reviews }
-    var missingDataNotice = liveState.map { it.missingDataNotice }
 
     override fun onCreate() {
         super.onCreate()
@@ -35,7 +31,7 @@ class RevListViewModel @Inject constructor(
         loadReview(false)
     }
 
-    fun itemClicked(url: String) {
+    fun onReviewPressed(url: String) {
         navigator.pushRevDetailsScreen(url)
     }
 
@@ -56,7 +52,7 @@ class RevListViewModel @Inject constructor(
             }).disposeOnCleared()
     }
 
-    private fun createInitialState(): RevListViewState {
+    fun createInitialState(): RevListViewState {
         return RevListViewState(
             showProgress = false,
             reviews = mutableListOf(),

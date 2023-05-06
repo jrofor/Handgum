@@ -11,7 +11,7 @@ import dagger.multibindings.IntoMap
  * @author rofor
  */
 @Module
-interface RevDetailsModule {
+internal interface RevDetailsModule {
     @Binds
     @IntoMap
     @ViewModelKey(RevDetailsViewModel::class)

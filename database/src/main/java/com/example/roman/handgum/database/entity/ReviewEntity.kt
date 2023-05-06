@@ -21,6 +21,9 @@ class ReviewEntity {
     @ColumnInfo(name = "mpaaRating")
     var mpaaRating: String = ""
 
+    @ColumnInfo(name = "byline")
+    var byline: String = ""
+
     @ColumnInfo(name = "publicationDate")
     var publicationDate: String = ""
 

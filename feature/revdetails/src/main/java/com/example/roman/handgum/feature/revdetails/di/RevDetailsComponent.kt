@@ -1,7 +1,7 @@
 package com.example.roman.handgum.feature.revdetails.di
 
 import com.example.roman.handgum.core.di.ViewModelBuilderModule
-import com.example.roman.handgum.feature.revdetails.RevDetailsFragment
+import com.example.roman.handgum.feature.revdetails.view.RevDetailsFragment
 import dagger.Component
 
 /**

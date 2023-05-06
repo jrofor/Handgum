@@ -1,6 +1,6 @@
 package com.example.roman.handgum.navigation.revdetails
 
-import com.example.roman.handgum.feature.revdetails.RevDetailsFragmentArgs
+import com.example.roman.handgum.feature.revdetails.view.RevDetailsFragmentArgs
 import com.example.roman.handgum.navigation.NavigationDispatcher
 import com.example.roman.handgum.navigation.R
 import com.example.roman.handgum.navigation.navigate

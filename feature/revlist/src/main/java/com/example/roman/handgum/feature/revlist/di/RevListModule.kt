@@ -1,12 +1,12 @@
-package com.example.roman.handgum.feature.revdlist.di
+package com.example.roman.handgum.feature.revlist.di
 
 import androidx.lifecycle.ViewModel
 import com.example.roman.handgum.core.di.ViewModelKey
-import com.example.roman.handgum.feature.revdlist.RevListViewModel
-import com.example.roman.handgum.feature.revdlist.domain.RevConverter
-import com.example.roman.handgum.feature.revdlist.domain.RevConverterImpl
-import com.example.roman.handgum.feature.revdlist.domain.RevListConverter
-import com.example.roman.handgum.feature.revdlist.domain.RevListConverterImpl
+import com.example.roman.handgum.feature.revlist.RevListViewModel
+import com.example.roman.handgum.feature.revlist.domain.RevConverter
+import com.example.roman.handgum.feature.revlist.domain.RevConverterImpl
+import com.example.roman.handgum.feature.revlist.domain.RevListConverter
+import com.example.roman.handgum.feature.revlist.domain.RevListConverterImpl
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap

@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.roman.handgum.App
 import com.example.roman.handgum.R
@@ -27,7 +28,7 @@ class FeatureFragment : BaseFragment(R.layout.fragment_feature) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-          (requireActivity().application as App).appComponent.featureComponent().create().inject(this)
+        (requireActivity().application as App).appComponent.featureComponent().create().inject(this)
     }
 
     override fun onCreateView(
@@ -42,7 +43,7 @@ class FeatureFragment : BaseFragment(R.layout.fragment_feature) {
 
         viewModel.apply {
             lifecycle.addObserver(this)
-            fLivaData.observe({ viewLifecycleOwner.lifecycle }, ::f)
+            fLivaData.observe(viewLifecycleOwner, ::f)
         }
         return binding.root
     }

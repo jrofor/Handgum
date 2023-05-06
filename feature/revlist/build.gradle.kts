@@ -1,5 +1,6 @@
 plugins {
     id("handgum.android.library")
+    id("handgum.android.library.compose")
 }
 
 android {
@@ -16,12 +17,6 @@ dependencies {
     implementation(project(":navigation-api"))
     implementation(project(":common-entity"))
 
-    //Views
-    implementation(libs.bundles.ui.base.libs)
-    implementation(libs.ui.swiperefresh)
-    implementation(libs.ui.recyclerview)
-    //ImageLoader
-    implementation(libs.glide)
     // Dagger
     implementation(libs.bundles.di.dagger)
     kapt(libs.bundles.di.dagger.kapt)

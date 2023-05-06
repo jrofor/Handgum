@@ -1,5 +1,6 @@
 plugins {
     id("handgum.android.library")
+    id("handgum.android.library.compose")
 }
 
 android {
@@ -14,8 +15,7 @@ dependencies {
 
     implementation(project(":core"))
     implementation(project(":navigation-api"))
-
-    implementation(libs.bundles.ui.base.libs)
+    implementation(project(":common-entity"))
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.bundles.androidtest)
@@ -27,4 +27,8 @@ dependencies {
 
     implementation(libs.lifecycle)
     implementation(libs.livedata)
+
+    implementation(libs.bundles.rxjava)
+
+    implementation(libs.timber)
 }

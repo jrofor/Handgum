@@ -5,8 +5,12 @@ plugins {
 android {
 
     defaultConfig {
-        buildConfigField("int", "DB_VERSION", "1")
+        buildConfigField("int", "DB_VERSION", "2")
         buildConfigField("String", "DB_FILE_NAME", "\"handgum.db\"")
+
+        javaCompileOptions.annotationProcessorOptions {
+            argument("room.schemaLocation", "$projectDir/schemas")
+        }
     }
 
     namespace = "com.example.roman.handgum.database"

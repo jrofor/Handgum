@@ -9,7 +9,7 @@ interface RevRepository {
 
     fun getAll(): List<ReviewModel>
 
-    fun loadById(id: String): ReviewModel
+    fun loadByUrl(url: String): ReviewModel
 
     fun insert(revList: List<ReviewModel>)
 

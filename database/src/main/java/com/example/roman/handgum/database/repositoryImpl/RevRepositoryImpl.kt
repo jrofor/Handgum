@@ -19,8 +19,8 @@ class RevRepositoryImpl @Inject constructor(revMapper: ReviewMapper, appDatabase
         return mapper.entityListToModelList(dao.getAll())
     }
 
-    override fun loadById(id: String): ReviewModel {
-        return mapper.entityToModel(dao.getReviewById(id))
+    override fun loadByUrl(url: String): ReviewModel {
+        return mapper.entityToModel(dao.getReviewByUrl(url))
     }
 
     override fun insert(revList: List<ReviewModel>) {

@@ -1,4 +1,4 @@
-package com.example.roman.handgum.feature.revdlist
+package com.example.roman.handgum.feature.revlist
 
 import com.example.roman.handgum.commonentity.ui.models.ReviewModel
 

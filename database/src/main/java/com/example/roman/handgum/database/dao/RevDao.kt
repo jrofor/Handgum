@@ -18,8 +18,8 @@ interface RevDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(reviewsEntity: List<ReviewEntity>)
 
-    @Query("SELECT * FROM Review WHERE id = :id")
-    fun getReviewById(id: String): ReviewEntity
+    @Query("SELECT * FROM Review WHERE url = :url")
+    fun getReviewByUrl(url: String): ReviewEntity
 
     @Query("DELETE FROM Review")
     fun deleteAll()

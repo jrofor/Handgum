@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/revListFragment"
-        android:name="com.example.roman.handgum.feature.revdlist.RevListFragment"
+        android:name="com.example.roman.handgum.feature.revlist.view.RevListFragment"
         android:label="RevListFragment"
         tools:layout="@layout/fragment_rev_list">
         <action
@@ -27,6 +27,6 @@
 
     </fragment>
 
-  <include app:graph="@navigation/rev_details_graph" />
+    <include app:graph="@navigation/rev_details_graph" />
 
 </navigation>

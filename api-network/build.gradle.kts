@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         //network constants
-        buildConfigField("long", "TIMEOUT", "180")
+        buildConfigField("long", "TIMEOUT", "60")
         buildConfigField("String", "BASE_URL", "\"https://api.nytimes.com/\"")
         buildConfigField("String", "API_KEY", "\"xTvrIaqsho3wZBAPUcJP7H8KqBl9cSaG\"")
         signingConfig = signingConfigs.getByName("debug")

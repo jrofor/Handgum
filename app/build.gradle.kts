@@ -42,7 +42,6 @@ dependencies {
     * Views
     */
     implementation(libs.bundles.ui.base.libs)
-
     /*
     * Lifecycle
     */

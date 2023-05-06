@@ -1,7 +1,7 @@
-package com.example.roman.handgum.feature.revdlist.di
+package com.example.roman.handgum.feature.revlist.di
 
 import com.example.roman.handgum.core.di.ViewModelBuilderModule
-import com.example.roman.handgum.feature.revdlist.RevListFragment
+import com.example.roman.handgum.feature.revlist.view.RevListFragment
 import dagger.Component
 
 /**

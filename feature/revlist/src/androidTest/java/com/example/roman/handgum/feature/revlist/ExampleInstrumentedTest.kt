@@ -1,4 +1,4 @@
-package com.example.roman.handgum.feature.revdlist
+package com.example.roman.handgum.feature.revlist
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry

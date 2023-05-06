@@ -1,11 +1,10 @@
-<resources>
-    <string name="app_name">Handgum</string>
-
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
     <!--RevListFragment-->
     <string name="fragment_rev_list_title">News List</string>
     <string name="fragment_rev_list_desc_multimedia">multimedia</string>
     <string name="fragment_rev_list_btn_name">READ MORE</string>
-    <string name="fragment_rev_list_err_data_is_empty">Please turn on the internet\n or\n update the list of news</string>
+    <string name="fragment_rev_list_err_data_is_empty">Please turn on the internet\n or\n update the list of reviews</string>
+    <string name="fragment_rev_list_image_content_description">MultiMedia</string>
 
     <!--menu-->
     <string name="menu_title_feature">feature</string>

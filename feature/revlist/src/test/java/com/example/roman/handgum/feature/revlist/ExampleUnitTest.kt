@@ -1,4 +1,4 @@
-package com.example.roman.handgum.feature.revdlist
+package com.example.roman.handgum.feature.revlist
 
 import org.junit.Assert.*
 import org.junit.Test

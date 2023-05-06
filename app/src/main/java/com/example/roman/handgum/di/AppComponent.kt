@@ -12,7 +12,7 @@ import com.example.roman.handgum.di.navigation.FeaturesNavigationModule
 import com.example.roman.handgum.di.navigation.NavigationModule
 import com.example.roman.handgum.di.network.ApiNetworkDependenciesModule
 import com.example.roman.handgum.feature.revdetails.di.RevDetailsDependencies
-import com.example.roman.handgum.feature.revdlist.di.RevListDependencies
+import com.example.roman.handgum.feature.revlist.di.RevListDependencies
 import com.example.roman.handgum.ui.activity.di.ActivityBuilderModule
 import com.example.roman.handgum.ui.fragment.feature.di.FeatureComponent
 import com.example.roman.handgum.ui.fragment.feature.di.FeatureModule
